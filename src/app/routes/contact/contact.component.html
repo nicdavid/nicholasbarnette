@@ -1,0 +1,39 @@
+<div class="container odd">
+	<h1>Contact</h1>
+	<p>Send me a message or connect with me on social media below.</p>
+
+	<form>
+		<div class="formBody">
+			<div class="inputGroup">
+				<div class="formContainer">
+					<label for="name">Name:</label>
+					<input type="text" placeholder="Nick" id="name" name="name" (input)="validateName($event.target.value)" [ngClass]="checkError('name')" aria-describedby="nameError" />
+					<span id="nameError" [ngClass]="checkErrorMsg('name')">Please enter your name.</span>
+				</div>
+
+				<div class="formContainer">
+					<label for="email">Email:</label>
+					<input type="email" placeholder="example@gmail.com" id="email" name="email" (input)="validateEmail($event.target.value)" [ngClass]="checkError('email')" aria-describedby="emailError" />
+					<span id="emailError" [ngClass]="checkErrorMsg('email')">Please enter a valid email address.</span>
+				</div>
+			</div>
+
+			<div class="formContainer">
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" rows="4" placeholder="Message" (input)="validateMessage($event.target.value)" [ngClass]="checkError('message')" aria-describedby="messageError"></textarea>
+				<span id="messageError" [ngClass]="checkErrorMsg('message')">Please don't send messages that are too short.</span>
+			</div>
+		</div>
+
+		<div class="formFooter">
+			<button type="button" class="btn primary" (click)="submitForm()">Submit</button>
+		</div>
+	</form>
+
+	<div class="socialContainer">
+		<div class="socialCircle"></div>
+		<div class="socialCircle"></div>
+		<div class="socialCircle"></div>
+	</div>
+	
+</div>

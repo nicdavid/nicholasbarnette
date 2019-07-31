@@ -1,0 +1,67 @@
+<nav [ngClass]="calculateClasses()" [attr.aria-hidden]="!display" (click)="testClick($event)" id="navContainer">
+	<button type="button" class="openMenu" (click)="toggleNavigation()" [attr.aria-hidden]="display">
+		<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<g filter="url(#filter0_d)">
+				<rect width="26" height="6" transform="matrix(-1 0 0 1 31 25)" fill="white"/>
+				<rect width="26" height="6" transform="matrix(-1 0 0 1 31 15)" fill="white"/>
+				<rect width="26" height="6" transform="matrix(-1 0 0 1 31 5)" fill="white"/>
+			</g>
+			<defs>
+				<filter id="filter0_d" x="-3" y="-3" width="42" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+					<feOffset/>
+					<feGaussianBlur stdDeviation="2.5"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0.0117647 0 0 0 0 0.101961 0 0 0 0 0.168627 0 0 0 0.35 0"/>
+					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+			</defs>
+		</svg>
+	</button>
+	<div class="navContainerInner" id="navContainerInner">
+		<button type="button" class="close" (click)="toggleNavigation()">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="3" height="28" transform="matrix(0.702606 -0.711579 0.702606 0.711579 5 7.13474)" fill="white"/>
+				<rect width="3" height="28" transform="matrix(0.702606 0.711579 -0.702606 0.711579 25 5)" fill="white"/>
+			</svg>
+		</button>
+		<ul class="navlist">
+			<li class="navitem" (click)="toggleNavigation()"><a routerLink="">
+				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6.25 16.75L16 8.5L25.75 16.75V28.75H18.25V21.25H13.75V28.75H6.25V16.75Z" fill="white"/>
+					<path d="M4.75582 15.2558C4.34678 14.8468 4.36908 14.1771 4.80442 13.7961L15.3415 4.57619C15.7185 4.24629 16.2815 4.24629 16.6585 4.57619L27.1956 13.7961C27.6309 14.1771 27.6532 14.8468 27.2442 15.2558L27.1548 15.3452C26.7853 15.7147 26.1936 15.7374 25.7969 15.3973L16.6508 7.55782C16.2763 7.23683 15.7237 7.23683 15.3492 7.55782L6.2031 15.3973C5.80636 15.7374 5.21469 15.7147 4.8452 15.3452L4.75582 15.2558Z" fill="white"/>
+					<path d="M19.75 5C19.75 4.44772 20.1977 4 20.75 4H21.75C22.3023 4 22.75 4.44772 22.75 5V10H20.75C20.1977 10 19.75 9.55228 19.75 9V5Z" fill="white"/>
+				</svg>
+				<span>Home</span>
+			</a></li>
+			<li class="navitem" (click)="toggleNavigation()"><a routerLink="projects">
+				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9 10H11L5 16L11 22H9L3 16L9 10Z" fill="white"/>
+					<path d="M23 22H21L27 16L21 10L23 10L29 16L23 22Z" fill="white"/>
+					<path d="M16.6667 8H18L15.4222 24H14L16.6667 8Z" fill="white"/>
+				</svg>
+				<span>Projects</span>
+			</a></li>
+			<li class="navitem" (click)="toggleNavigation()"><a href="/assets/resume.pdf" target="_blank">
+				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6 4C6 3.44772 6.44772 3 7 3H22L26 7V28C26 28.5523 25.5523 29 25 29H7C6.44772 29 6 28.5523 6 28V4Z" fill="white"/>
+					<path d="M21.5 3.5L23.5 5.5L25.5 7.5H22.5C21.9477 7.5 21.5 7.05228 21.5 6.5V3.5Z" fill="#062F4F"/>
+					<rect width="14" height="1" rx="0.5" transform="matrix(1 0 0 -1 9 12)" fill="#062F4F"/>
+					<rect width="14" height="1" rx="0.5" transform="matrix(1 0 0 -1 9 16)" fill="#062F4F"/>
+					<rect width="14" height="1" rx="0.5" transform="matrix(1 0 0 -1 9 20)" fill="#062F4F"/>
+					<rect width="14" height="1" rx="0.5" transform="matrix(1 0 0 -1 9 24)" fill="#062F4F"/>
+					<rect width="10" height="1" rx="0.5" transform="matrix(1 0 0 -1 9 8)" fill="#062F4F"/>
+				</svg>
+				<span>Resume</span>
+			</a></li>
+			<li class="navitem" (click)="toggleNavigation()"><a routerLink="contact">
+				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M3 9.37806C3 9.16926 3.16926 9 3.37806 9C3.45734 9 3.53462 9.02493 3.59896 9.07125L15.4157 17.5793C15.7647 17.8306 16.2353 17.8306 16.5843 17.5793L28.401 9.07125C28.4654 9.02493 28.5427 9 28.6219 9C28.8307 9 29 9.16926 29 9.37806V22C29 22.5523 28.5523 23 28 23H4C3.44772 23 3 22.5523 3 22V9.37806Z" fill="white"/>
+					<path d="M4.41918 8H27.6704C27.8524 8 28 8.14755 28 8.32957C28 8.43647 27.9482 8.53672 27.8609 8.59851L16.578 16.5906C16.2317 16.8359 15.7683 16.8359 15.422 16.5906L4.13907 8.59851C4.05184 8.53672 4 8.43647 4 8.32957C4 8.14755 4.14755 8 4.32957 8H4.41918Z" fill="white"/>
+				</svg>
+				<span>Contact</span>
+			</a></li>
+		</ul>
+	</div>
+</nav>

@@ -1,0 +1,59 @@
+$backgroundColorDark: #062F4F
+$backgroundColorDarkHover: darken($backgroundColorDark, 5%)
+$backgroundColorDarkActive: darken($backgroundColorDark, 10%)
+$backgroundColorLight: #ECEDEE
+$textColorDark: #000000
+$textColorLight: #FFFFFF
+$primaryColor: #BB2601
+
+
+.container
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	height: 100vh
+	padding: 2rem 4rem
+	margin: 0 auto
+	box-sizing: border-box
+
+	&.odd
+		background-color: $backgroundColorDark
+
+		h1, p
+			color: $textColorLight
+
+	&.even
+		background-color: $backgroundColorLight
+
+		h1, p
+			color: $textColorDark
+
+	> *
+		max-width: 600px
+		width: 100%
+
+	h1
+		font-size: 2.5rem
+		text-align: center
+
+	p
+		font-size: 1.5rem
+		text-align: center
+
+form
+	margin-top: 2rem
+
+.socialContainer
+	display: flex
+	flex-direction: row
+	flex-wrap: nowrap
+	justify-content: space-around
+	width: 100%
+	margin-top: 2rem
+
+	.socialCircle
+		background-color: rgba(255,255,255,0.6)
+		height: 75px
+		width: 75px
+		border-radius: 100%
