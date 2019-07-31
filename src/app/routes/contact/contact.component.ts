@@ -11,6 +11,9 @@ export class ContactComponent implements OnInit {
 	validName = true;
 	validEmail = true;
 	validMessage = true;
+	name = '';
+	email = '';
+	message = '';
 
 	constructor() { }
 
@@ -18,19 +21,20 @@ export class ContactComponent implements OnInit {
 	}
 
 	validateName(val) {
+		this.name = val;
 		this.validName = val.length > 1;
 		return val.length > 1;
 	}
 
 	validateEmail(val) {
+		this.email = val;
 		let re = new RegExp('[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?', 'g');
 		this.validEmail = re.test(val);
-		console.log(val);
-		console.log(re.test(val));
 		return re.test(val);
 	}
 
 	validateMessage(val) {
+		this.message = val;
 		this.validMessage = val.trim().length > 5;
 		return val.trim().length > 5;
 	}
@@ -57,13 +61,11 @@ export class ContactComponent implements OnInit {
 
 	submitForm() {
 		//Validate all the fields
-		var f1 = this.validateName(document.getElementById('name').value);
-		var f2 = this.validateEmail(document.getElementById('email').value);
-		var f3 = this.validateMessage(document.getElementById('message').value);
+		var f1 = this.validateName(this.name);
+		var f2 = this.validateEmail(this.email);
+		var f3 = this.validateMessage(this.message);
 
-		var params = 'name=' + document.getElementById('name').value + '&' + 'email=' + document.getElementById('email').value + '&' + 'message=' + document.getElementById('message').value;
-
-		console.log(params);
+		var params = 'name=' + this.name + '&' + 'email=' + this.email + '&' + 'message=' + this.message;
 
 		if (f1 && f2 && f3) {
 			//Add submit functionality here
