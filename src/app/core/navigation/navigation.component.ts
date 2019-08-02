@@ -36,7 +36,7 @@ export class NavigationComponent implements OnInit {
 	}
 
 	testClick(event) {
-		if (event.target.id === "navContainer") {
+		if (event.target.id === "navContainer" && this.navigationOpen) {
 			this.toggleNavigation();
 		}
 	}
