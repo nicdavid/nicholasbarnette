@@ -1,10 +1,4 @@
-$backgroundColorDark: #062F4F
-$backgroundColorDarkHover: darken($backgroundColorDark, 5%)
-$backgroundColorDarkActive: darken($backgroundColorDark, 10%)
-$backgroundColorLight: #ECEDEE
-$textColorDark: #000000
-$textColorLight: #FFFFFF
-$primaryColor: #BB2601
+@import ../../../global_variables
 
 @keyframes displayNone
 	0%
@@ -33,6 +27,8 @@ $primaryColor: #BB2601
 		left: 1rem
 		background: transparent
 		border: none
+		-webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,.4))
+    	filter: drop-shadow(2px 2px 4px rgba(0,0,0,.4))
 
 	&.opened 
 		background-color: rgba(0,0,0,0.6)

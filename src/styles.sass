@@ -1,13 +1,4 @@
-$backgroundColorDark: #062F4F
-$backgroundColorDarkHover: darken($backgroundColorDark, 5%)
-$backgroundColorDarkActive: darken($backgroundColorDark, 10%)
-$backgroundColorLight: #ECEDEE
-$textColorDark: #000000
-$textColorLight: #FFFFFF
-$primaryColor: #BB2601
-$primaryColorHover: lighten($primaryColor, 5%)
-$primaryColorActive: darken($primaryColor, 5%)
-
+@import global_variables
 
 html
 	font-size: 16px !important
@@ -48,14 +39,18 @@ h4, h5, h6
 	margin: 0
 	font-weight: 400
 	line-height: 1.5
+	color: $textColorLight
 
 p, span
 	margin: 0
 	font-weight: 400
 	line-height: 1.25
+	color: $textColorLight
+	line-height: 2
 
 a
 	text-decoration: none
+	color: $textColorLight
 
 textarea
 	resize: none
@@ -138,6 +133,8 @@ label
 		flex-direction: column
 		margin: 1rem
 		border-radius: 0.25rem
+		transition: transform 0.25s ease-in-out
+		transform: scale(1)
 
 		.mainContent
 			display: flex
@@ -182,3 +179,6 @@ label
 				text-overflow: ellipsis
 				white-space: nowrap
 				overflow: hidden
+
+		&:hover
+			transform: scale(1.05)

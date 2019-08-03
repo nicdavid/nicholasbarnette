@@ -7,6 +7,10 @@ import { NavigationComponent } from './core/navigation/navigation.component';
 import { HomeComponent } from './routes/home/home.component';
 import { ProjectsComponent } from './routes/projects/projects.component';
 import { ContactComponent } from './routes/contact/contact.component';
+import { CoinlyComponent } from './routes/coinly/coinly.component';
+import { VinciComponent } from './routes/vinci/vinci.component';
+import { SurinComponent } from './routes/surin/surin.component';
+import { Page404Component } from './routes/page404/page404.component';
 
 
 const routes: Routes = [
@@ -24,8 +28,20 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
+    path: 'coinly',
+    component: CoinlyComponent
+  },
+  {
+    path: 'surin',
+    component: SurinComponent
+  },
+  {
+    path: 'vinci',
+    component: VinciComponent
+  },
+  {
     path: '**',
-    redirectTo: ''
+    component: Page404Component
   }
 ];
 
@@ -36,7 +52,11 @@ const routes: Routes = [
     NavigationComponent,
     HomeComponent,
     ProjectsComponent,
-    ContactComponent
+    ContactComponent,
+    CoinlyComponent,
+    VinciComponent,
+    SurinComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
