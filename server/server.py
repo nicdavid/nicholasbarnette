@@ -1,20 +1,26 @@
 from flask import Flask, render_template, request, jsonify
-import sqlite3
-
-# Sets up/connects to DB
-conn = sqlite3.connect('resume.db')
-c = conn.cursor()
-
+import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = "19Me19Rc9rdweu1yD08iME16D"
+
+
+# Sets up the database connection
+mydb = mysql.connector.connect(
+  host="107.180.41.160",
+  user="server_admin",
+  passwd="gocoinlygo16!",
+  database="resume"
+)
+
+c = mydb.cursor()
 
 
 try:
     # Message Table
     c.execute('''
 	    CREATE TABLE Messages(
-            messageID INTEGER PRIMARY KEY,
+            messageID INTEGER AUTO_INCREMENT PRIMARY KEY,
             name TEXT,
             email TEXT,
             message TEXT,
@@ -22,7 +28,7 @@ try:
         )
     ''')
 
-except sqlite3.Error as e:
+except Exception as e:
     print(e)
 
 # Delete all messages
@@ -36,40 +42,61 @@ def submitContact():
 
 	# Setup DB Connection
 	try:
-		conn = sqlite3.connect('resume.db')
-		c = conn.cursor()
-	except sqlite3.Error as e:
+		c = mydb.cursor()
+	except Exception as e:
 		print(e)
 		return jsonify(e), 404
 
 	# Insert message into a database
 	try:
-		c.execute('INSERT INTO Messages(name, email, message, sendDateTime) VALUES("' + 
-	    	data['name'] + '", "' + data['email'] + '", "' + data['message'] + 
-	    	'", DATETIME("NOW"))')
-		conn.commit()
-	except sqlite3.Error as e:
+		query = 'INSERT INTO Messages(name, email, message, sendDateTime) VALUES("' + data['name'] + '", "' + data['email'] + '", "' + data['message'] + '", NOW())'
+		c.execute(query)
+		mydb.commit()
+		c.close()
+
+	except Exception as e:
+		c.close()
 		print(e)
 		return jsonify(e), 404
 
 	return jsonify('{}'), 202
 
-@app.route('/contact/view', methods = ['GET'])
+@app.route('/contact/view', methods = ['POST'])
 def viewContact():
+
+	data = request.get_json() or request.form
 
 	# Setup DB Connection
 	try:
-		conn = sqlite3.connect('resume.db')
-		c = conn.cursor()
-	except sqlite3.Error as e:
+		c = mydb.cursor()
+	except Exception as e:
 		print(e)
 		return jsonify(e), 404
+
+	try:
+		query = 'SELECT email, password FROM Users WHERE email="' + data['email'] + '" AND password="' + data['password'] + '"'
+		print(query)
+		c.execute(query)
+		info = c.fetchall()
+		print(info)
+
+		if len(info) == 0:
+			c.close()
+			return jsonify('Access not granted.'), 202
+
+	except Exception as e:
+		c.close()
+		print(e)
+		return jsonify(e), 404
+
 
 	# Insert message into a database
 	try:
 		c.execute('SELECT * FROM Messages ORDER BY sendDateTime ASC')
 		info = c.fetchall()
-	except sqlite3.Error as e:
+		c.close()
+	except Exception as e:
+		c.close()
 		print(e)
 		return jsonify(e), 404
 
