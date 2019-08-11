@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from  "@angular/common/http";
 
 @Component({
 	selector: 'app-contact',
@@ -8,67 +10,80 @@ import { Component, OnInit } from '@angular/core';
 
 export class ContactComponent implements OnInit {
 
-	validName = true;
-	validEmail = true;
-	validMessage = true;
-	name = '';
-	email = '';
-	message = '';
+	contactForm: FormGroup;
+	nameFirstError = true;
+	emailFirstError = true;
+	messageFirstError = true;
 
-	constructor() { }
+	private submitURL = 'http://127.0.0.1:5000/contact/submit';
+
+	httpOptions = {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+	};
+
+
+	constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
 	ngOnInit() {
+		this.contactForm = this.formBuilder.group({
+			nameInput: ['', [Validators.required, Validators.minLength(2)]],
+			emailInput: ['', [Validators.required, Validators.email]],
+			messageInput: ['', [Validators.required, Validators.minLength(5)]]
+		});
 	}
 
-	validateName(val) {
-		this.name = val;
-		this.validName = val.length > 1;
-		return val.length > 1;
-	}
-
-	validateEmail(val) {
-		this.email = val;
-		let re = new RegExp('[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?', 'g');
-		this.validEmail = re.test(val);
-		return re.test(val);
-	}
-
-	validateMessage(val) {
-		this.message = val;
-		this.validMessage = val.trim().length > 5;
-		return val.trim().length > 5;
+	setError(input) {
+		if (input === "name") {
+			this.nameFirstError = false;
+		} else if (input === "email") {
+			this.emailFirstError = false;
+		} else if (input === "message") {
+			this.messageFirstError = false;
+		}
 	}
 
 	checkError(input) {
+		var data = this.contactForm.value;
 		if (input === "name") {
-			return {'error': !this.validName}
+			return {'error': this.contactForm.controls['nameInput'].invalid && !this.nameFirstError}
 		} else if (input === "email") {
-			return {'error': !this.validEmail}
+			return {'error': this.contactForm.controls['emailInput'].invalid && !this.emailFirstError}
 		} else if (input === "message") {
-			return {'error': !this.validMessage}
+			return {'error': this.contactForm.controls['messageInput'].invalid && !this.messageFirstError}
 		}
 	}
 
 	checkErrorMsg(input) {
+		var data = this.contactForm.value;
 		if (input === "name") {
-			return {'message': true, 'error': !this.validName}
+			return {'message': true, 'error': this.contactForm.controls['nameInput'].invalid && !this.nameFirstError}
 		} else if (input === "email") {
-			return {'message': true, 'error': !this.validEmail}
+			return {'message': true, 'error': this.contactForm.controls['emailInput'].invalid && !this.emailFirstError}
 		} else if (input === "message") {
-			return {'message': true, 'error': !this.validMessage}
+			return {'message': true, 'error': this.contactForm.controls['messageInput'].invalid && !this.messageFirstError}
 		}
 	}
 
 	submitForm() {
-		//Validate all the fields
-		var f1 = this.validateName(this.name);
-		var f2 = this.validateEmail(this.email);
-		var f3 = this.validateMessage(this.message);
+		this.nameFirstError = false;
+		this.emailFirstError = false;
+		this.messageFirstError = false;
 
-		var params = 'name=' + this.name + '&' + 'email=' + this.email + '&' + 'message=' + this.message;
+		if (!this.contactForm.invalid) {
+			this.http.post(this.submitURL, JSON.stringify(this.contactForm.value), this.httpOptions)
+				.subscribe(
+				    res => {
+				    	console.log(res);
+				    },
+				    (err: HttpErrorResponse) => {
+					    console.log(err);
+				    }
+				);
 
-		if (f1 && f2 && f3) {
-			//Add submit functionality here
+			this.contactForm.reset();
+			this.nameFirstError = true;
+			this.emailFirstError = true;
+			this.messageFirstError = true;
 		}
 	}
 

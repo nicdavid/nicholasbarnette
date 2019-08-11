@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS, cross_origin
 import mysql.connector
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.secret_key = "19Me19Rc9rdweu1yD08iME16D"
 
 
@@ -36,9 +39,12 @@ except Exception as e:
 # conn.commit()
 
 @app.route('/contact/submit', methods = ['POST'])
+@cross_origin()
 def submitContact():
 
 	data = request.get_json() or request.form
+
+	print(data)
 
 	# Setup DB Connection
 	try:
@@ -49,7 +55,7 @@ def submitContact():
 
 	# Insert message into a database
 	try:
-		query = 'INSERT INTO Messages(name, email, message, sendDateTime) VALUES("' + data['name'] + '", "' + data['email'] + '", "' + data['message'] + '", NOW())'
+		query = 'INSERT INTO Messages(name, email, message, sendDateTime) VALUES("' + data['nameInput'] + '", "' + data['emailInput'] + '", "' + data['messageInput'] + '", NOW())'
 		c.execute(query)
 		mydb.commit()
 		c.close()
@@ -62,6 +68,7 @@ def submitContact():
 	return jsonify('{}'), 202
 
 @app.route('/contact/view', methods = ['POST'])
+@cross_origin()
 def viewContact():
 
 	data = request.get_json() or request.form
@@ -74,7 +81,7 @@ def viewContact():
 		return jsonify(e), 404
 
 	try:
-		query = 'SELECT email, password FROM Users WHERE email="' + data['email'] + '" AND password="' + data['password'] + '"'
+		query = 'SELECT email, password FROM Users WHERE email="' + data['emailInput'] + '" AND password="' + data['passwordInput'] + '"'
 		print(query)
 		c.execute(query)
 		info = c.fetchall()
