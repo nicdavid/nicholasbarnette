@@ -13,6 +13,7 @@ import { CoinlyComponent } from './routes/coinly/coinly.component';
 import { VinciComponent } from './routes/vinci/vinci.component';
 import { SurinComponent } from './routes/surin/surin.component';
 import { Page404Component } from './routes/page404/page404.component';
+import { IconlyComponent } from './routes/iconly/iconly.component';
 
 
 const routes: Routes = [
@@ -30,16 +31,20 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'coinly',
+    path: 'projects/coinly',
     component: CoinlyComponent
   },
   {
-    path: 'surin',
+    path: 'projects/surin',
     component: SurinComponent
   },
   {
-    path: 'vinci',
+    path: 'projects/vinci',
     component: VinciComponent
+  },
+  {
+    path: 'projects/iconly',
+    component: IconlyComponent
   },
   {
     path: '**',
@@ -58,7 +63,8 @@ const routes: Routes = [
     CoinlyComponent,
     VinciComponent,
     SurinComponent,
-    Page404Component
+    Page404Component,
+    IconlyComponent
   ],
   imports: [
     BrowserModule,

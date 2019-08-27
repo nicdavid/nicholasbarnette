@@ -1,0 +1,83 @@
+@import ../../../global_variables
+
+.container
+	padding: 4rem
+
+	&:first-child
+		padding-top: 0
+
+		h1
+			margin-bottom: 1rem;
+
+		a
+			text-align: center
+			margin-bottom: 2rem
+			text-decoration: underline
+
+	h1, h2, h3
+		margin-bottom: 2rem
+		text-align: center
+
+	h2
+		font-weight: 700
+
+	p:not(:last-child)
+		margin-bottom: 2rem
+
+	.body
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+
+		svg
+			margin: 1rem 2rem 2rem 2rem
+
+		p:not(.description)
+			margin: 0 2rem
+			max-width: 600px
+
+		p.description
+			font-size: 0.85rem
+
+	&.questions
+		display: flex
+		flex-direction: column
+		align-items: center
+		padding-bottom: 10rem
+
+		p
+			margin: 0 2rem 2rem 2rem
+			text-align: center
+
+.divider
+	border-bottom: 2px solid rgba(255,255,255,0.4)
+	width: 80%
+	max-width: 800px
+	margin: 0 auto
+
+.iconContainer
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	margin: 4rem 0
+
+	.rowContainer
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+		&:not(:first-child)
+			margin-top: 2rem
+
+		> span
+			margin: 0 1rem
+
+
+@media only screen and (max-width: 756px)
+	.container
+		padding: 4rem 0
+
+		p
+			text-align: center
