@@ -2,7 +2,6 @@
 	"name": "resume",
 	"version": "1.0.0",
 	"description": "The personal resume of Nick Barnette.",
-	"homepage": "http://nicholasbarnette.github.io/resume",
 	"scripts": {
 		"storybook": "start-storybook -p 9000 -c .storybook",
 		"start": "webpack-dev-server --config webpack.dev.config.js --open",
