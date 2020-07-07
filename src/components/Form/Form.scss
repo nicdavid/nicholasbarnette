@@ -1,0 +1,12 @@
+.form {
+	display: grid;
+	grid-template-columns: 25% auto;
+	row-gap: 1rem;
+	width: 100%;
+	max-width: 40rem;
+	align-items: center;
+}
+
+.button {
+	place-self: flex-start;
+}

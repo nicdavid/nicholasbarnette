@@ -1,0 +1,132 @@
+:root {
+	// Base Size
+	--base-size: 16px;
+
+	// Border Radius
+	--default-border-radius: 0.125rem;
+
+	// Font Sizes
+	--font-size-sm: calc(var(--base-size) * 0.75);
+	--font-size-md: calc(var(--base-size) * 1);
+	--font-size-lg: calc(var(--base-size) * 1.5);
+	--font-size-xl: calc(var(--base-size) * 2.25);
+	--font-size-xxl: calc(var(--base-size) * 3);
+}
+
+:root,
+.light {
+	// Base Colors
+	--color-neutral: #f3f3f3;
+	--color-primary: #0f7acc;
+	--color-secondary: #bb2601;
+
+	// Text Colors
+	--color-text-light: #262626;
+	--color-text-dark: #ffffff;
+
+	// Background Colors
+	--page-bg: #f3f3f3;
+	--page-dark-bg: #062f4f;
+	--background-overlay-neutral-light: rgba(0, 0, 0, 0.25);
+	--background-overlay-primary-light: rgba(15, 122, 204, 0.85);
+	--background-overlay-neutral-dark: rgba(0, 0, 0, 0.25);
+	--background-overlay-primary-dark: rgba(136, 199, 246, 1);
+	--background-sh: 0px 0px 24px -16px rgba(0, 0, 0, 0.75);
+	--navigation-bg: #0f7acc;
+	--navigation-dark-bg: #0f7acc;
+
+	// Neutral State
+	--neutral-bg: var(--color-neutral);
+	--neutral-bd: var(--color-text-light);
+	--neutral-fg: var(--color-text-light);
+	--neutral-hover-bg: rgba(15, 122, 204, 0.15);
+	--neutral-hover-bd: var(--color-text-light);
+	--neutral-hover-fg: var(--color-text-light);
+	--neutral-active-bg: rgba(15, 122, 204, 0.35);
+	--neutral-active-bd: var(--color-text-light);
+	--neutral-active-fg: var(--color-text-light);
+
+	// Primary State
+	--primary-bg: var(--color-primary);
+	--primary-bd: var(--color-primary);
+	--primary-fg: var(--color-text-dark);
+	--primary-hover-bg: rgba(15, 122, 204, 0.75);
+	--primary-hover-bd: rgba(15, 122, 204, 0.75);
+	--primary-hover-fg: var(--color-text-dark);
+	--primary-active-bg: rgba(15, 122, 204, 0.85);
+	--primary-active-bd: rgba(15, 122, 204, 0.85);
+	--primary-active-fg: var(--color-text-dark);
+
+	// Inputs
+	--input-bg: rgba(0, 0, 0, 0.1);
+	--input-bd: transparent;
+	--input-fg: var(--color-text-light);
+	--input-focus-bg: var(--input-bg);
+	--input-focus-bd: #1790ee;
+	--input-focus-fg: var(--input-fg);
+	--input-placeholder-fg: rgba(0, 0, 0, 0.65);
+
+	// Focus
+	--focus-width: 1px;
+	--focus-style: dotted;
+	--focus-color-light: var(--color-text-light);
+	--focus-color-dark: var(--color-text-dark);
+}
+
+.dark {
+	--color-neutral: #062f4f;
+	--color-primary: #0f7acc;
+	--color-secondary: #bb2601;
+
+	// Text Colors
+	--color-text-light: #ffffff;
+	--color-text-dark: #ffffff;
+
+	// Background Colors
+	--page-bg: #062f4f;
+	--page-dark-bg: #041f34;
+	--background-overlay-neutral-light: rgba(255, 255, 255, 0.15);
+	--background-overlay-primary-light: #0f7acc;
+	--background-overlay-neutral-dark: rgba(255, 255, 255, 0.15);
+	--background-overlay-primary-dark: #0f7acc;
+	--background-sh: 0px 0px 24px -16px rgba(0, 0, 0, 0.75);
+	--navigation-bg: var(--page-dark-bg);
+	--navigation-dark-bg: var(--page-bg);
+
+	// Neutral State
+	--neutral-bg: var(--color-neutral);
+	--neutral-bd: var(--color-text-dark);
+	--neutral-fg: var(--color-text-dark);
+	--neutral-hover-bg: rgba(255, 255, 255, 0.15);
+	--neutral-hover-bd: var(--color-text-dark);
+	--neutral-hover-fg: var(--color-text-dark);
+	--neutral-active-bg: rgba(255, 255, 255, 0.25);
+	--neutral-active-bd: var(--color-text-dark);
+	--neutral-active-fg: var(--color-text-dark);
+
+	// Primary State
+	--primary-bg: var(--color-primary);
+	--primary-bd: var(--color-primary);
+	--primary-fg: var(--color-text-light);
+	--primary-hover-bg: rgba(15, 122, 204, 0.75);
+	--primary-hover-bd: rgba(15, 122, 204, 0.75);
+	--primary-hover-fg: var(--color-text-light);
+	--primary-active-bg: rgba(15, 122, 204, 0.85);
+	--primary-active-bd: rgba(15, 122, 204, 0.85);
+	--primary-active-fg: var(--color-text-light);
+
+	// Inputs
+	--input-bg: rgba(255, 255, 255, 0.15);
+	--input-bd: var(--color-neutral);
+	--input-fg: var(--color-text-light);
+	--input-focus-bg: var(--input-bg);
+	--input-focus-bd: #1790ee;
+	--input-focus-fg: var(--input-fg);
+	--input-placeholder-fg: rgba(255, 255, 255, 0.85);
+
+	// Focus
+	--focus-width: 1px;
+	--focus-style: dotted;
+	--focus-color-light: var(--color-text-light);
+	--focus-color-dark: var(--color-text-dark);
+}
