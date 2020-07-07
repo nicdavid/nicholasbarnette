@@ -25,8 +25,6 @@ jobs:
               run: npm run test
 
             - name: Deploy
-              run: |
-                  git config --global user.email "nickdbarnette@gmail.com"
-                  git config --global user.name "nicholasbarnette"
-                  git remote set-url origin https://d7068a2b589fcc616ca50e536259f026f14c28dc@github.com/nicholasbarnette/resume.git
-                  npm run deploy
+              run: npm run deploy
+              env:
+                  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
