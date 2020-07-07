@@ -10,9 +10,7 @@
 		"test": "jest",
 		"format": "npm run format:prettier && npm run format:tslint",
 		"format:prettier": "prettier --write .",
-		"format:tslint": "tslint -p tsconfig.json -c tslint.json ./**/*.{ts,tsx,js,jsx} --fix",
-		"predeploy": "npm run build:prod",
-		"deploy": "gh-pages -d ./dist"
+		"format:tslint": "tslint -p tsconfig.json -c tslint.json ./**/*.{ts,tsx,js,jsx} --fix"
 	},
 	"keywords": [],
 	"author": "Nick Barnette",
