@@ -25,6 +25,9 @@ jobs:
               run: npm run test
 
             - name: Deploy
-              run: npm run deploy
+              run: |
+                  git config --global user.email "nickdbarnette@gmail.com"
+                  git config --global user.name "Nick Barnette" 
+                  npm run deploy
               env:
                   DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
