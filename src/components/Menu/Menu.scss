@@ -1,0 +1,38 @@
+.menu {
+	display: flex;
+	flex-direction: column;
+	box-shadow: var(--background-sh);
+	border: 1px solid var(--neutral-bd);
+	border-radius: var(--default-border-radius);
+	overflow: hidden;
+	position: absolute;
+}
+
+.item {
+	list-style: none;
+	padding: 0.5rem 1rem;
+	background-color: var(--neutral-bg);
+	color: var(--neutral-fg);
+	cursor: pointer;
+	user-select: none;
+}
+
+.item:hover {
+	background-color: var(--neutral-hover-bg);
+	color: var(--neutral-hover-fg);
+}
+
+.item:focus {
+	outline-width: var(--focus-width);
+	outline-style: var(--focus-style);
+	outline-color: var(--focus-color-dark);
+	outline-offset: calc(-1 * var(--focus-width) - 1px);
+}
+
+.divider {
+	border-bottom: 1px solid var(--neutral-bd);
+}
+
+.closed {
+	display: none;
+}
