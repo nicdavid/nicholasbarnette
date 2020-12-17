@@ -1,0 +1,146 @@
+.skills-container {
+	max-width: $layout-size-xl;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+	margin: 0 auto;
+	row-gap: 4rem;
+	column-gap: 8rem;
+}
+
+.skill {
+	background-image: $ui-dark;
+	padding: 2rem 3rem 4rem 3rem;
+	box-sizing: border-box;
+	color: $text-color-light;
+	border-radius: 16px;
+	box-shadow: $box-shadow-md;
+}
+
+.skill-header {
+	font-size: $font-size-lg;
+	margin-block-end: 1rem;
+}
+
+.skill-groups {
+	display: grid;
+	grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
+	row-gap: 1.5rem;
+}
+
+.skill-group {
+	display: flex;
+	flex-direction: column;
+	padding: 0 1rem;
+}
+
+.skill-group-text {
+	font-size: $font-size-md;
+}
+
+.skill-group-progress {
+	height: 0.75rem;
+	width: 100%;
+	border-radius: 1px;
+	background-color: $ui-highlight;
+	position: relative;
+	overflow: hidden;
+
+	&::after {
+		content: '';
+		height: 100%;
+		width: 0;
+		background-color: lightblue;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: width $animation-duration-long $animation-function
+			$animation-duration-short;
+	}
+
+	.animated-rise &.html-css::after {
+		width: 98%;
+	}
+
+	&.js-ts::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (1 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.js-ts::after {
+		width: 95%;
+	}
+
+	&.python::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (2 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.python::after {
+		width: 90%;
+	}
+
+	&.java::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (3 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.java::after {
+		width: 75%;
+	}
+
+	&.c-lang::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (4 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.c-lang::after {
+		width: 60%;
+	}
+
+	.animated-rise &.git::after {
+		width: 97%;
+	}
+
+	&.gerrit::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (1 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.gerrit::after {
+		width: 92%;
+	}
+
+	&.jira::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (1 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.jira::after {
+		width: 92%;
+	}
+
+	&.nodejs::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (2 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.nodejs::after {
+		width: 85%;
+	}
+
+	&.jenkins::after {
+		transition-delay: calc(
+			#{$animation-duration-short} + (3 * #{$animation-duration-short})
+		);
+	}
+	.animated-rise &.jenkins::after {
+		width: 80%;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.skills-container {
+		row-gap: 4rem;
+		column-gap: 4rem;
+	}
+}

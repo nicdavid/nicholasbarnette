@@ -1,0 +1,73 @@
+@import './variables.scss';
+@import './animations.scss';
+
+html {
+	font-size: 16px !important;
+	height: 100%;
+	width: 100%;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	color: $text-color-dark;
+	line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+a,
+p,
+span {
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	color: inherit;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #d6dee1;
+	border-radius: 20px;
+	border: 3px solid transparent;
+	background-clip: content-box;
+}
+
+*:focus {
+	outline: none;
+}
+
+/******* IMPORTS *******/
+@import './main.scss';
+@import './button.scss';
+@import './card.scss';
+@import './divider.scss';
+@import './project.scss';
+@import './skills.scss';
