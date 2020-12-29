@@ -12,11 +12,10 @@
 		top: 0;
 		height: 100%;
 		width: 100%;
-		background-image: url('../assets/img/Nick.jpg');
+		background-image: url('../assets/img/NickBlurred.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: bottom right;
-		filter: blur(1px);
 
 		&::after {
 			content: '';
